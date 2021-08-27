@@ -51,6 +51,7 @@ func realMain() error {
 			}
 			asciigraph.Clear()
 			fmt.Println(t)
+			fmt.Println(cmdStr)
 			fmt.Print(render.Next(p))
 		case s := <-sig:
 			fmt.Printf("stopped by %s\n", s)
@@ -89,5 +90,5 @@ func (r *graphRenderer) Next(d float64) string {
 	} else {
 		r.data = append(r.data, d)
 	}
-	return asciigraph.Plot(r.data)
+	return asciigraph.Plot(r.data, asciigraph.Height(10))
 }
